@@ -1,0 +1,12 @@
+public class DALAccountController {
+    
+    /*
+    * Parameter :
+    * This method return recently created 10 account records.
+    */
+    @AuraEnabled 
+    public static List<Account> getAllAccountRecords(){
+        List<Account> accountList= [SELECT Id,Name,Number_of_Contacts__c,Industry,Phone,Type,Website FROM Account Order By CreatedDate DESC Limit 10];
+        return accountList;
+    }
+}
