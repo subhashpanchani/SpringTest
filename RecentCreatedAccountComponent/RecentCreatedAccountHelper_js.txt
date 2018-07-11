@@ -1,0 +1,26 @@
+({
+	doInitHelper:function(component, event) {
+		var action = component.get("c.getAllAccountRecords");
+        action.setParams({ 
+        });
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+                var resultValue = response.getReturnValue();
+                component.set('v.accounts',resultValue);
+            }
+            else {
+                var toastEvent = $A.get("e.force:showToast");
+                toastEvent.setParams({
+                    "title": "Error!",
+                    "type":"error",
+                    "message": "There is some error while processing."
+                });
+                toastEvent.fire();
+                $A.get("e.force:closeQuickAction").fire();
+            }
+        });
+        
+        $A.enqueueAction(action);
+	}
+})
