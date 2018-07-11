@@ -1,4 +1,4 @@
-public class DALAccountController {
+public with sharing class DALAccountController {
     
     /*
     * Parameter :
