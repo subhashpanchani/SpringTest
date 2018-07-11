@@ -1,0 +1,9 @@
+trigger ContactTrigger on Contact (after insert, after delete, after undelete) {
+    
+    //if we use Trigger.new below in place of Trigger.old for delete operation then we will end up with 
+    //System.NullPointerException:Attempt to de-reference a null object    
+    List<Contact> contacts = Trigger.isDelete ? Trigger.old : Trigger.new;
+    
+    //Update Accounts
+    ContactTriggerHelper.updateNoOfContacts(contacts);
+}
