@@ -1,0 +1,72 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="DALAccountController">
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute name="accounts" type="Account[]" />
+    
+    <div class="slds-page-header" role="banner">
+        <div class="slds-media slds-no-space slds-grow">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="utility:record_create" size="mediam"/>
+            </div>
+            <div class="slds-media__body">
+                <p class="slds-page-header__title slds-truncate slds-align-middle" title="Recently Created Accounts">Recently Created Accounts</p>
+                <p class="slds-text-body--small slds-page-header__info">Recently Created Accounts</p>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!v.accounts}">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer" cellspacing="0">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="Id">Id</div>
+                    </th>
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="No Of Contacts">No Of Contacts</div>
+                    </th>
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="Industry">Industry</div>
+                    </th>
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="Phone">Phone</div>
+                    </th>
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="Type">Type</div>
+                    </th>
+                    <th class="slds_table_tr_border" scope="col">
+                        <div class="slds-truncate" title="Website">Website</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.accounts}" var="act">
+                    <tr>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Id}">
+                            <div class="slds-truncate" title="{!act.Id}">{!act.Id}</div>
+                        </td>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Name}">
+                            <div class="slds-truncate" title="{!act.Name}">{!act.Name}</div>
+                        </td>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Number_of_Contacts__c}">
+                            <div class="slds-truncate" title="{!act.Number_of_Contacts__c}">{!act.Number_of_Contacts__c}</div>
+                        </td>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Industry}">
+                            <div class="slds-truncate" title="{!act.Industry}">{!act.Industry}</div>
+                        </td>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Phone}">
+                            <div class="slds-truncate" title="{!act.Phone}">{!act.Phone}</div>
+                        </td>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Type}">
+                            <div class="slds-truncate" title="{!act.Type}">{!act.Type}</div>
+                        </td>
+                        <td class="slds_table_tr_border" scope="row" data-label="{!act.Website}">
+                            <div class="slds-truncate" title="{!act.Website}">{!act.Website}</div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </aura:if>
+</aura:component>
